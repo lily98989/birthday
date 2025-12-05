@@ -1,0 +1,744 @@
+body {
+    font-family: 'Great Vibes', cursive; /* خط فاخر مزخرف */
+    background: linear-gradient(135deg, #FFD700 0%, #FFFFFF 50%, #C0C0C0 100%); /* ذهبي إلى فضي */
+    text-align: center;
+    padding: 40px;
+    color: #333;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Confetti قوي وحلو */
+.confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.confetti::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #FFD700;
+    animation: fall 3s infinite linear;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100vh) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* زهور فاخرة متحركة */
+.flowers {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: url('https://via.placeholder.com/60x60/FFD700/000?text=🌹') no-repeat center; /* زهر ذهبي (استبدل بصورة حقيقية) */
+    opacity: 0.8;
+    animation: float-strong 2s infinite ease-in-out;
+}
+
+.flower1 { top: 10%; left: 10%; }
+.flower2 { top: 20%; right: 10%; }
+.flower3 { bottom: 20%; left: 20%; }
+
+@keyframes float-strong {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.1); }
+}
+
+/* الكعكة الفاخرة */
+.cake-container {
+    margin-top: 40px;
+    animation: bounce-strong 1s infinite;
+}
+
+@keyframes bounce-strong {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+}
+
+.cake {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); /* ظل قوي */
+}
+
+.layer {
+    width: 100%;
+    height: 50px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+
+.layer-bottom {
+    background: linear-gradient(to bottom, #8B4513, #DAA520); /* بني مع ذهبي */
+}
+
+.layer-middle {
+    background: linear-gradient(to bottom, #D2691E, #FFD700);
+}
+
+.layer-top {
+    background: linear-gradient(to bottom, #F4A460, #FFFACD);
+}
+
+.frosting {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(to bottom, #FFD700, #FFFFFF); /* ذهبي لامع */
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.gold-accents {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 10px;
+    background: linear-gradient(to right, #FFD700, #FFA500);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.candle {
+    position: absolute;
+    top: -50px;
+    width: 12px;
+    height: 45px;
+    background: #FFF;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.candle1 { left: 20%; }
+.candle2 { left: 45%; }
+.candle3 { left: 70%; }
+
+.flame {
+    position: absolute;
+    top: -18px;
+    width: 14px;
+    height: 22px;
+    background: linear-gradient(to bottom, #FF4500, #FFD700);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker-strong 0.8s infinite;
+}
+
+.flame1 { left: 20%; }
+.flame2 { left: 45%; }
+.flame3 { left: 70%; }
+
+@keyframes flicker-strong {
+    0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    50% { opacity: 0.7; transform: scale(0.9) rotate(5deg); }
+}
+
+/* النص الفاخر */
+.greeting {
+    font-size: 50px;
+    margin: 20px 0;
+    color: #FFD700; /* ذهبي */
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0%, 100% { text-shadow: 3px 3px 6px rgba(0,0,0,0.7); }
+    50% { text-shadow: 3px 3px 12px rgba(255,215,0,1); }
+}
+
+/* ظرف الرسالة الفاخر */
+.envelope {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 350px;
+    height: 250px;
+    background: linear-gradient(to bottom, #FFFACD, #FFD700);
+    border: 3px solid #DAA520;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    transition: transform 1s ease, box-shadow 1s ease;
+    overflow: hidden;
+}
+
+.envelope.closed .envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(to bottom, #FFD700, #DAA520);
+    clip-path: polygon(0 0, 100% 0, 50% 50%);
+    transition: transform 1s ease;
+}
+
+.gold-seal {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+.envelope.open {
+    transform: translateY(-50%) rotateY(180deg) scale(1.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+}
+
+.envelope.open .envelope-flap {
+    transform: translateY(-40px);
+}
+
+.envelope .letter {
+    padding: 30px;
+    color: #333;
+    font-size: 20px;
+    text-align: right;
+    display: none;
+}
+
+.envelope.open .letter {
+    display: block;
+}
+
+/* صندوق السؤال الفاخر */
+.question-box {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #FFD700;
+    padding: 25px;
+    border-radius: 15px;
+    width: 350px;
+    margin: 40px auto 0;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+
+.question-box input {
+    width: 90%;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #FFD700;
+    font-family: 'Great Vibes', cursive;
+}
+
+.question-box button {
+    margin-top: 15px;
+    padding: 15px 30px;
+    background: linear-gradient(to right, #FFD700, #FFA500);
+    border: none;
+    color: #333;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Great Vibes', cursive;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.question-box button:hover {
+    transform: scale(1.1);
+}
+
+#error {
+    color: #FF4500;
+    margin-top: 10px;
+    font-family: 'Great Vibes', cursive;
+}
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معايدة خاصة</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffcce6 0%, #fff0cc 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 900px;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(to right, #ff6b6b, #ff9d9d);
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 0;
+        }
+        
+        .content {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+        }
+        
+        .left-section {
+            flex: 45%;
+            background: linear-gradient(to bottom, #fff0f5, #fffaf0);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .photo-container {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid #ffbad1;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 25px;
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cake {
+            width: 180px;
+            height: 120px;
+            background: linear-gradient(to bottom, #ffbad1, #ff9eb4);
+            border-radius: 50% 50% 0 0;
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        .cake:before {
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 180px;
+            height: 25px;
+            background: #ffd700;
+            border-radius: 0 0 10px 10px;
+        }
+        
+    .cake:after {
+        content: "🎂";
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 30px;
+        animation: bounce 2s infinite;
+    }
+        
+        .right-section {
+            flex: 55%;
+            padding: 35px;
+            background: #fffafb;
+        }
+        
+        .message-box {
+            background: white;
+            border: 3px solid #ffbac1;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #d46a6a;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border: 2px solid #ffbac1;
+            border-radius: 15px;
+            font-family: inherit;
+            font-size: 16px;
+            resize: none;
+            margin-bottom: 15px;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #ff69b4;
+        }
+        
+        .char-count {
+            text-align: left;
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 20px;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background: linear-gradient(to bottom, #ff8fa3, #ff4d7a);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result-message {
+            display: none;
+            padding: 25px;
+            background: #fff0f5;
+            border-radius: 15px;
+            border: 2px dashed #ffbac1;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .user-text {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border-right: 4px solid #ffbac1;
+            margin: 15px 0;
+            text-align: right;
+            font-style: italic;
+            white-space: pre-line;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to right, #ff9d9d, #ff6b6b);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .music-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid #ff6b6b;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #ff6b6b;
+            opacity: 0;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        @keyframes confetti-fall {
+            0% { 
+                opacity: 1;
+                transform: translateY(-100px) rotate(0deg); 
+            }
+            100% { 
+                opacity: 0;
+                transform: translateY(500px) rotate(360deg); 
+            }
+        }
+        
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: white;
+        }
+        
+        .welcome-content {
+            background: linear-gradient(135deg, #ff6b6b, #ff9d9d);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+        }
+        
+        .welcome-btn {
+            background: white;
+            color: #ff6b6b;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-content">
+            <h2>🎉 اهلا ي عيوني هلا بيك  🎂</h2>
+            <p> معايدة خاصه لي عبودييييي </p>
+        
+            <button class="welcome-btn" onclick="startApp()">
+               جاهزاً
+            </button>
+        </div>
+    </div>
+
+    <div class="container" id="mainContainer" style="display: none;">
+        <div class="header">
+            <h1>🎂 كل عام وأنت بخير ي عبود كل سنه وانت بالف خير وصحه وسلامه ! 🎉</h1>
+        </div>
+        
+        <div class="content">
+            <div class="left-section">
+                <div class="photo-container">
+                    <img src="img/1000042967.jpg" alt=" " id="birthdayImage">
+                </div>
+                <div class="cake"></div>
+            </div>
+            
+            <div class="right-section">
+                <div class="message-box">
+                    <h2>رسالة خاصة من القلب 💌</h2>
+                    <div class="question">
+                        <P>أهلاً بعيدك! 🎂</p>
+                        <p>لو ائلبك قادر يحكي شو الشي اللي لي هسه محتفظ فيه عني  شو ذكرى الخالده بئلبك ؟ اكتب لي 20 كلمة على الأقل: </p>
+                    </div>
+                    
+                    <
+                      
+
+    
+
+
+                    <textarea id="userMessage" placeholder="اكتب رسالتك هنا..."></textarea>
+                    <div class="char-count">عدد الكلمات: <span id="wordCounter">0</span> / 20</div>
+                    
+                    <div class="buttons">
+                        <button id="sendBtn" disabled>إرسال الرسالة</button>
+                        <button onclick="showEncouragement()">بعدين</button>
+                    </div>
+                    
+                    <div class="result-message" id="resultMessage">
+                        <h3>شكراً لك! 💖</h3>
+                        <p>كل عام وأنت بألف خير وفرح</p>
+                        <p>رسالتك:</p>
+                        <div class="user-text" id="messageDisplay"></div>
+                        <p>أتمنى لك سنة جديدة مليئة بالسعادة وحب وتحقيق امنايات  🎈</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>❤️ من القلب إلى القلب ❤️</p>
+        </div>
+        
+        <div class="music-btn" onclick="toggleMusic()">
+            <i class="fas fa-volume-mute"></i>
+        </div>
+    </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="love me like you do - ellie goulding (slowed + reverb with lyrics) - coffee jelly.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="celebrationMusic">
+        <source src="Farah Chreim - Albi Elou [Official Lyric Video] (2022)  فرح شريم - قلبي الو.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let musicPlaying = false;
+        const music = document.getElementById('backgroundMusic');
+        const celebrationMusic = document.getElementById('celebrationMusic');
+        const musicBtn = document.querySelector('.music-btn i');
+        
+        function startApp() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'block';
+            createConfetti();
+        }
+        
+        function toggleMusic() {
+            if (musicPlaying) {
+                music.pause();
+                if (!celebrationMusic.paused) celebrationMusic.pause();
+                musicBtn.className = 'fas fa-volume-mute';
+                musicPlaying = false;
+            } else {
+                music.play().catch(error => {
+                    alert('النقر على أي مكان في الصفحة لتفعيل الصوت');
+                });
+                musicBtn.className = 'fas fa-volume-up';
+                musicPlaying = true;
+            }
+        }
+        
+        document.getElementById('userMessage').addEventListener('input', function() {
+            const text = this.value.trim();
+            const words = text === '' ? 0 : text.split(/\s+/).length;
+            document.getElementById('wordCounter').textContent = words;
+            document.getElementById('sendBtn').disabled = words < 20;
+        });
+        
+        document.getElementById('sendBtn').addEventListener('click', function() {
+            // الرسالة الجاهزة
+            const preparedMessage = "كل سنة وإنت بخير…\n\nيمكن الظروف تغيّرت، ويمكن كل واحد فينا صار بطريقه، بس يوم ميلادك ضلّ إله معنى عندي، وما قدرت أخلّيه يمرّ بدون ما أكتبلك كلمة.\n\nبهاليوم… بتذكّر قدّيش كنت شخص له أثر بقلبي.\nمش لأنك كنت حبيبي بس…\nلأني عرفتك منيح، وشفت فيك شغلات ما كل الناس بتشوفها: طيبتك، ونيّتك النظيفة، والإنسان اللي رغم كل شي… كان يوم من الأيام قريب من روحي.\n\nأنا مش عم بكتبلك لأرجّع شي، ولا لأفتح باب مسكّر…\nعم بكتب لأن في ناس مرّوا علينا وبيستاهلوا كلمة حلوة، حتى لو ما عاد في شي بينهم.\nوأنت واحد منهم.\n\nوبتمنّى لك هالسنة تكون غير…\nتنجح، وتتفوّق، وتوصل للي بدّك إيّاه، خصوصًا إنك هسه بالسادس، وإن شاء الله ربنا يفتحلك أبواب الخير ويكون النجاح مرافقك بكل خطوة.\nبتمنّى أشوفك محقق اللي بتحلم فيه، وقدّ التعب اللي عم تبذله.\n\nيا رب تكون هالسنة بداية خير إلك، بداية راحة وطمأنينة وسعادة.\nيا رب تلاقي الطريق اللي يريحك، وتوصل لمرحلة ترضى فيها عن حالك وعن كل شي وصلتله.\n\nوبصراحة…\nرح تضلّ ذكرى نظيفة جوّا قلبي.\nلا وجع ولا ندم… بس احترام، ودعوة من بعيد، وابتسامة لما أتذكّر الأيام الحلوة.\n\nكل سنة وإنت بخير،\nوإن شاء الله أيامك الجايّة أحلى من اللي راحِت.\nوحتى لو كل واحد فينا راح بطريق… بتمنّى الخير إلك من قلبي.\n\nعيد ميلاد سعيد… بطريقة تليق فيك ❤️";
+            
+            document.getElementById('messageDisplay').innerText = preparedMessage;
+            
+            document.querySelector('.question').style.display = 'none';
+            document.querySelector('textarea').style.display = 'none';
+            document.querySelector('.char-count').style.display = 'none';
+            document.querySelector('.buttons').style.display = 'none';
+            document.getElementById('resultMessage').style.display = 'block';
+            
+            createConfetti();
+            
+            // إيقاف الأغنية الأولى وبدأ أغنية احتفالية ثانية
+            if (musicPlaying) {
+                music.pause();
+            }
+            
+            celebrationMusic.play();
+            musicBtn.className = 'fas fa-volume-up';
+            musicPlaying = true;
+        });
+        
+        function showEncouragement() {
+            alert('🤗 خذ وقتك... الرسالة تنتظرك عندما تكون جاهزاً!');
+        }
+        
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#ff9d9d', '#ffd700', '#ff69b4', '#3498db'];
+            const container = document.querySelector('.container');
+            
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s linear`;
+                container.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        document.body.addEventListener('click', function() {
+            if (!musicPlaying) {
+                music.play().then(() => {
+                    musicBtn.className = 'fas fa-volume-up';
+                    musicPlaying = true;
+                }).catch(() => {});
+            }
+        });
+        
+        function changePhoto(imageUrl) {
+            document.getElementById('birthdayImage').src = imageUrl;
+        }
+    </script>
+</body>
+</html>
